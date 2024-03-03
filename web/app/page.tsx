@@ -1,4 +1,6 @@
-const INSTA = [
+import React from "react";
+
+const SOCIAL_MEDIA = [
   {
     text: "Instagram",
     image:
@@ -6,8 +8,6 @@ const INSTA = [
     handle: "brandon_tang_",
     url: "https://www.instagram.com/brandon_tang_/",
   },
-];
-const DISCORD = [
   {
     text: "Discord",
     image:
@@ -15,9 +15,6 @@ const DISCORD = [
     handle: "sowinghalo",
     url: "https://discord.com",
   },
-];
-
-const GITHUB = [
   {
     text: "GitHub",
     image:
@@ -26,6 +23,16 @@ const GITHUB = [
     url: "https://github.com/Likima",
   },
 ];
+
+function renderIcons() {
+  return SOCIAL_MEDIA.map(({ image, text, handle, url }, index) => {
+    return (
+      <div className={`text-sky-600`} key={index}>
+        <Icon image={image} text={text} handle={handle} url={url} />
+      </div>
+    );
+  });
+}
 
 function Icon({
   text,
@@ -41,9 +48,9 @@ function Icon({
   url: string;
 }) {
   return (
-    <div className="flex flex-row items-center gap-x-4 align-middle">
+    <div className="flex items-center gap-x-4 align-middle">
       <img src={image} width={size} height={size} alt={text} />
-      <a href={url}>
+      <a href={url} className="whitespace-nowrap">
         {text}: {handle}
       </a>
     </div>
@@ -56,35 +63,17 @@ export default function Page() {
       <body className="bg-white font-sans dark:bg-slate-900">
         <div className="mb-10 grid justify-items-center bg-sky-800 p-10 font-bold shadow-lg">
           <h1 className="mb-5 text-3xl">Brandon Tang</h1>
-          <div className="grid grid-cols-3 justify-items-center">
-            <div className="basis-1/3 text-sky-600">
-              {GITHUB.map(({ image, text, handle, url }) => {
-                return (
-                  <Icon image={image} text={text} handle={handle} url={url} />
-                );
-              })}
-            </div>
-            <div className="basis-1/3 text-sky-600">
-              {INSTA.map(({ image, text, handle, url }) => {
-                return (
-                  <Icon image={image} text={text} handle={handle} url={url} />
-                );
-              })}
-            </div>
-            <div className="basis-1/3 text-sky-600">
-              {DISCORD.map(({ image, text, handle, url }) => {
-                return (
-                  <Icon image={image} text={text} handle={handle} url={url} />
-                );
-              })}
-            </div>
+          <div className="grid grid-cols-3 gap-6 justify-items-center text-xs sm:flex sm:flex-wrap sm:justify-center">
+            {renderIcons()}
           </div>
         </div>
         <p className="m-10 text-2xl text-slate-900 dark:text-white">Projects</p>
         <div className="flex flex-row ">
-          <div className="m-10 grid basis-1/4 justify-items-center bg-slate-900 p-10 dark:bg-white"></div>
-          <div className="basis-1/4 bg-slate-900 dark:bg-white">Hello</div>
-          <div className="basis-1/2 bg-slate-900 dark:bg-white">Hello</div>
+          <div className="m-10 grid basis-1/4 justify-items-center bg-slate-900 p-10 dark:bg-slate-700">
+            hello
+          </div>
+          <div className="basis-1/4 bg-slate-900 dark:bg-slate-700">Hello</div>
+          <div className="basis-1/2 bg-slate-900 dark:bg-slate-700">Hello</div>
         </div>
       </body>
     </div>
