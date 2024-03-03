@@ -57,6 +57,10 @@ function Icon({
   );
 }
 
+function subtitle(text: string){
+  return(<p className="m-10 text-2xl text-slate-900 dark:text-white">{text}</p>)
+}
+
 export default function Page() {
   return (
     <div className="h-screen w-screen">
@@ -67,13 +71,25 @@ export default function Page() {
             {renderIcons()}
           </div>
         </div>
-        <p className="m-10 text-2xl text-slate-900 dark:text-white">Projects</p>
-        <div className="flex flex-row ">
-          <div className="m-10 grid basis-1/4 justify-items-center bg-slate-900 p-10 dark:bg-slate-700">
+        {subtitle("About")}
+        <div className = "container mx-auto">
+          <p className = "max-w-full">
+            Hi! My name is Brandon, I live in Vancouver, BC,  and I am a first year student at Simon Fraser University majoring in computer science. 
+            I have been coding for 4 years and have experience with Python, C/C++, JavaScript, Typescript, HTML/CSS, and Frameworks such as 
+            Angular. I love working on projects related to game theory and implementing algorithms to optimize the skill of bots.
+          </p>
+        </div>
+        {subtitle("Projects")}
+        <div className="flex flex-row">
+          <div className="text-center m-10 grid basis-1/4 justify-items-center bg-slate-900 p-10 dark:bg-slate-700 rounded-lg">
             hello
           </div>
-          <div className="basis-1/4 bg-slate-900 dark:bg-slate-700">Hello</div>
-          <div className="basis-1/2 bg-slate-900 dark:bg-slate-700">Hello</div>
+          <div className="text-center p-10 m-10 basis-1/4 justify-items-center bg-slate-900 dark:bg-slate-700 rounded-lg">
+            Hello
+          </div>
+          <div className="text-center p-10 m-10 basis-1/2 justify-items-center bg-slate-900 dark:bg-slate-700 rounded-lg">
+            Hello
+          </div>
         </div>
       </body>
     </div>
