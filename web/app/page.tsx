@@ -1,4 +1,5 @@
 import React from "react";
+import { games } from "./fltk_games";
 
 const SOCIAL_MEDIA = [
   {
@@ -24,10 +25,22 @@ const SOCIAL_MEDIA = [
   },
 ];
 
+const CATEGORIES = [
+  {
+    text: "PyFLTK Games"
+  },
+  {
+    text: "Bots"
+  },
+  {
+    text: "Other"
+  }
+]
+
 function renderIcons() {
   return SOCIAL_MEDIA.map(({ image, text, handle, url }, index) => {
     return (
-      <div className={`text-sky-600`} key={index}>
+      <div className={`text-sky-400`} key={index}>
         <Icon image={image} text={text} handle={handle} url={url} />
       </div>
     );
@@ -39,7 +52,7 @@ function Icon({
   image,
   handle,
   url,
-  size = 25,
+  size = 30,
 }: {
   text: string;
   image: string;
@@ -48,8 +61,8 @@ function Icon({
   url: string;
 }) {
   return (
-    <div className="flex items-center gap-x-4 align-middle">
-      <img src={image} width={size} height={size} alt={text} />
+    <div className="flex gap-x-4">
+      <img src={image} width={size} height={size} alt={text}/>
       <a href={url} className="whitespace-nowrap">
         {text}: {handle}
       </a>
@@ -58,40 +71,47 @@ function Icon({
 }
 
 function subtitle(text: string){
-  return(<p className="m-10 text-2xl text-slate-900 dark:text-white">{text}</p>)
+  return(<p className="m-10 text-2xl text-slate-800 dark:text-white">{text}</p>)
+}
+
+function RenderCategories(){
+  return CATEGORIES.map(({text}, index)=>{
+    return(<div className="text-center mx-2 grid basis-1/3 justify-items-center bg-slate-900 p-5 dark:bg-slate-700 rounded-lg" key = {index}>
+      <h1 className = "font-bold">{text}</h1>
+      <button className="bg-sky-400 m-2 px-4 py-2 shadow-xl rounded-lg">See More</button>
+    </div>)
+  })
 }
 
 export default function Page() {
   return (
-    <div className="h-screen w-screen">
-      <body className="bg-white font-sans dark:bg-slate-900">
-        <div className="mb-10 grid justify-items-center bg-sky-800 p-10 font-bold shadow-lg">
-          <h1 className="mb-5 text-3xl">Brandon Tang</h1>
-          <div className="grid grid-cols-3 gap-6 justify-items-center text-xs sm:flex sm:flex-wrap sm:justify-center">
-            {renderIcons()}
-          </div>
+    <div className="bg-gradient-to-r from-blue-500 font-sans">
+      <div className="bg-sky-800 mb-10 grid justify-items-center p-10 font-bold shadow-xl">
+        <h1 className="mb-5 text-3xl">Brandon Tang</h1>
+        <div className="grid grid-cols-3 gap-6 items-center text-s sm:flex sm:flex-wrap">
+          {renderIcons()}
         </div>
-        {subtitle("About")}
-        <div className = "container mx-auto">
-          <p className = "max-w-full">
-            Hi! My name is Brandon, I live in Vancouver, BC,  and I am a first year student at Simon Fraser University majoring in computer science. 
-            I have been coding for 4 years and have experience with Python, C/C++, JavaScript, Typescript, HTML/CSS, and Frameworks such as 
-            Angular. I love working on projects related to game theory and implementing algorithms to optimize the skill of bots.
-          </p>
-        </div>
-        {subtitle("Projects")}
-        <div className="flex flex-row">
-          <div className="text-center m-10 grid basis-1/4 justify-items-center bg-slate-900 p-10 dark:bg-slate-700 rounded-lg">
-            hello
-          </div>
-          <div className="text-center p-10 m-10 basis-1/4 justify-items-center bg-slate-900 dark:bg-slate-700 rounded-lg">
-            Hello
-          </div>
-          <div className="text-center p-10 m-10 basis-1/2 justify-items-center bg-slate-900 dark:bg-slate-700 rounded-lg">
-            Hello
-          </div>
-        </div>
-      </body>
+      </div>
+      <div>{subtitle("About")}</div>
+      <div className = "container mx-auto">
+        <p className = "mx-5 max-w-full">
+          Hi! My name is Brandon, I live in Vancouver, British Columbia, and I am a first-year student at Simon Fraser University majoring in computing science. 
+          I have been coding for four years and have experience with Python, C/C++, JavaScript/Typescript, HTML/CSS, and frameworks such as 
+          Angular. I am currently learning Next.js and assembly language. I love working on projects related to game theory and implementing algorithms to optimize 
+          the skill of bots. I am excited to take on new opportunities and continue to learn and grow as a software engineer.
+        </p>
+      </div>
+      <div>{subtitle("Projects")}</div>
+      <div className="flex flex-row mx-10">
+        {RenderCategories()}
+      </div>
+      <div>{subtitle("Hobbies")}</div>
+      <div className = "container mx-auto">
+        <p className = "mx-5 max-w-full">
+          In my spare time I like to play music. I have been playing the cello, piano, and guitar for many
+          years now. I love playing a game called GeoGuessr among many other strategy games.
+        </p>
+      </div>
     </div>
   );
 }
