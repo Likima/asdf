@@ -71,7 +71,7 @@ function Icon({
 }
 
 function subtitle(text: string){
-  return(<p className="m-10 text-2xl text-slate-800 dark:text-white">{text}</p>)
+  return(<p className="m-10 text-3xl text-slate-800 dark:text-white">{text}</p>)
 }
 
 function RenderCategories(){
