@@ -71,7 +71,7 @@ function Icon({
 }
 
 function subtitle(text: string){
-  return(<p className="m-10 text-3xl text-slate-800 dark:text-white">{text}</p>)
+  return(<p className="m-10 text-3xl text-slate-800 dark:text-slate-400">{text}</p>)
 }
 
 function RenderCategories(){
@@ -83,18 +83,38 @@ function RenderCategories(){
   })
 }
 
+function DisplayForm(){
+
+}
+
+function Form({
+  name,
+  description,
+  image,
+  size = 40,
+  url
+}:{
+  name:string,
+  description:string
+  image:string
+  size?:number
+  url:string
+}){
+
+}
+
 export default function Page() {
   return (
     <div className="bg-gradient-to-r from-blue-500 font-sans">
       <div className="bg-sky-800 mb-10 grid justify-items-center p-10 font-bold shadow-xl">
         <h1 className="mb-5 text-3xl">Brandon Tang</h1>
-        <div className="grid grid-cols-3 gap-6 items-center text-s sm:flex sm:flex-wrap">
+        <div className="grid grid-cols-3 gap-6 items-center text-xs sm:flex sm:flex-wrap">
           {renderIcons()}
         </div>
       </div>
       <div>{subtitle("About")}</div>
       <div className = "container mx-auto">
-        <p className = "mx-5 max-w-full">
+        <p className = "mx-5 max-w-full text-blue-200">
           Hi! My name is Brandon, I live in Vancouver, British Columbia, and I am a first-year student at Simon Fraser University majoring in computing science. 
           I have been coding for four years and have experience with Python, C/C++, JavaScript/Typescript, HTML/CSS, and frameworks such as 
           Angular. I am currently learning Next.js and assembly language. I love working on projects related to game theory and implementing algorithms to optimize 
@@ -107,7 +127,7 @@ export default function Page() {
       </div>
       <div>{subtitle("Hobbies")}</div>
       <div className = "container mx-auto">
-        <p className = "mx-5 max-w-full">
+        <p className = "mx-5 max-w-full text-blue-200">
           In my spare time I like to play music. I have been playing the cello, piano, and guitar for many
           years now. I love playing a game called GeoGuessr among many other strategy games.
         </p>
